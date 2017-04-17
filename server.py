@@ -11,8 +11,12 @@ def enable_corse():
     response.headers['Access-Control-Allow-Methods'] = 'GET'
     response.headers['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
 
-@app.route('/', method=['GET'])
-def index():
+@app.route('/get', method=['GET'])
+def getIndex():
     return 'something fantastic'
+
+@app.route('/post', method=['POST'])
+def postIndex():
+    return 'something enigmatic'
 
 run(app, host='localhost', port=5080)
