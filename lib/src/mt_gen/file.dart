@@ -16,6 +16,7 @@ class File implements TBase {
   static final TField _PROJECT_ID_FIELD_DESC = new TField("projectId", TType.STRING, 2);
   static final TField _TYPE_FIELD_DESC = new TField("type", TType.I32, 3);
   static final TField _NAME_FIELD_DESC = new TField("name", TType.STRING, 4);
+  static final TField _CHILDREN_FIELD_DESC = new TField("children", TType.LIST, 5);
 
   String _id;
   static const int ID = 1;
@@ -25,6 +26,8 @@ class File implements TBase {
   static const int TYPE = 3;
   String _name;
   static const int NAME = 4;
+  List<File> _children;
+  static const int CHILDREN = 5;
 
   bool __isset_type = false;
 
@@ -84,6 +87,19 @@ class File implements TBase {
     this.name = null;
   }
 
+  // children
+  List<File> get children => this._children;
+
+  set children(List<File> children) {
+    this._children = children;
+  }
+
+  bool isSetChildren() => this.children != null;
+
+  unsetChildren() {
+    this.children = null;
+  }
+
   getFieldValue(int fieldID) {
     switch (fieldID) {
       case ID:
@@ -94,6 +110,8 @@ class File implements TBase {
         return this.type;
       case NAME:
         return this.name;
+      case CHILDREN:
+        return this.children;
       default:
         throw new ArgumentError("Field $fieldID doesn't exist!");
     }
@@ -133,6 +151,14 @@ class File implements TBase {
         }
         break;
 
+      case CHILDREN:
+        if (value == null) {
+          unsetChildren();
+        } else {
+          this.children = value;
+        }
+        break;
+
       default:
         throw new ArgumentError("Field $fieldID doesn't exist!");
     }
@@ -149,6 +175,8 @@ class File implements TBase {
         return isSetType();
       case NAME:
         return isSetName();
+      case CHILDREN:
+        return isSetChildren();
       default:
         throw new ArgumentError("Field $fieldID doesn't exist!");
     }
@@ -192,6 +220,23 @@ class File implements TBase {
             TProtocolUtil.skip(iprot, field.type);
           }
           break;
+        case CHILDREN:
+          if (field.type == TType.LIST) {
+            {
+              TList _list0 = iprot.readListBegin();
+              this.children = new List<File>();
+              for (int _i1 = 0; _i1 < _list0.length; ++_i1) {
+                File _elem2;
+                _elem2 = new File();
+                _elem2.read(iprot);
+                this.children.add(_elem2);
+              }
+              iprot.readListEnd();
+            }
+          } else {
+            TProtocolUtil.skip(iprot, field.type);
+          }
+          break;
         default:
           TProtocolUtil.skip(iprot, field.type);
           break;
@@ -224,6 +269,17 @@ class File implements TBase {
     if (this.name != null) {
       oprot.writeFieldBegin(_NAME_FIELD_DESC);
       oprot.writeString(this.name);
+      oprot.writeFieldEnd();
+    }
+    if (this.children != null) {
+      oprot.writeFieldBegin(_CHILDREN_FIELD_DESC);
+      {
+        oprot.writeListBegin(new TList(TType.STRUCT, this.children.length));
+        for (var elem3 in this.children) {
+          elem3.write(oprot);
+        }
+        oprot.writeListEnd();
+      }
       oprot.writeFieldEnd();
     }
     oprot.writeFieldStop();
@@ -266,6 +322,14 @@ class File implements TBase {
       ret.write("null");
     } else {
       ret.write(this.name);
+    }
+
+    ret.write(", ");
+    ret.write("children:");
+    if (this.children == null) {
+      ret.write("null");
+    } else {
+      ret.write(this.children);
     }
 
     ret.write(")");

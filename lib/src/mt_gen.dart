@@ -10,6 +10,7 @@ library mt_api.src.mt_gen;
 export 'mt_gen/file_type.dart' show FileType;
 export 'mt_gen/project.dart' show Project;
 export 'mt_gen/file.dart' show File;
+export 'mt_gen/context.dart' show Context;
 export 'mt_gen/mt_proj.dart' show MTProj;
 export 'mt_gen/mt_proj.dart' show MTProjClient;
 export 'mt_gen/mt_proj.dart' show MTProjProcessor;

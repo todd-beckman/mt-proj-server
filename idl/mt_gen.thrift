@@ -13,10 +13,16 @@ struct File {
     2: string projectId
     3: FileType type
     4: string name
+    5: list<File> children
+}
+
+struct Context {
+    1: string correlationId
+    2: string userId
 }
 
 service MTProj {
     void ping()
 
-
+    File getFileTreeForProject(1: Context context, 2: string projectId) // TODO: throws SomeError
 }

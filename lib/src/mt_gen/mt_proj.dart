@@ -15,6 +15,8 @@ import 'package:mt_api/src/mt_gen.dart';
 abstract class MTProj {
 
   Future ping();
+
+  Future<File> getFileTreeForProject(Context context, String projectId);
 }
 
 class MTProjClient implements MTProj {
@@ -59,6 +61,33 @@ class MTProjClient implements MTProj {
     return;
   }
 
+  Future<File> getFileTreeForProject(Context context, String projectId) async {
+    oprot.writeMessageBegin(new TMessage("getFileTreeForProject", TMessageType.CALL, nextSeqid()));
+    getFileTreeForProject_args args = new getFileTreeForProject_args();
+    args.context = context;
+    args.projectId = projectId;
+    args.write(oprot);
+    oprot.writeMessageEnd();
+
+    await oprot.transport.flush();
+
+    TMessage msg = iprot.readMessageBegin();
+    if (msg.type == TMessageType.EXCEPTION) {
+      TApplicationError error = TApplicationError.read(iprot);
+      iprot.readMessageEnd();
+      throw error;
+    }
+
+    getFileTreeForProject_result result = new getFileTreeForProject_result();
+    result.read(iprot);
+    iprot.readMessageEnd();
+    if (result.isSetSuccess()) {
+      return result.success;
+    }
+
+    throw new TApplicationError(TApplicationErrorType.MISSING_RESULT, "getFileTreeForProject failed: unknown result");
+  }
+
 }
 
 typedef void ProcessFunction(int seqid, TProtocol iprot, TProtocol oprot);
@@ -67,6 +96,7 @@ class MTProjProcessor implements TProcessor {
   MTProjProcessor(MTProj iface) {
     iface_ = iface;
     PROCESS_MAP["ping"] = ping;
+    PROCESS_MAP["getFileTreeForProject"] = getFileTreeForProject;
   }
 
   MTProj iface_;
@@ -96,6 +126,18 @@ class MTProjProcessor implements TProcessor {
     ping_result result = new ping_result();
     iface_.ping();
     oprot.writeMessageBegin(new TMessage("ping", TMessageType.REPLY, seqid));
+    result.write(oprot);
+    oprot.writeMessageEnd();
+    oprot.transport.flush();
+  }
+
+  getFileTreeForProject(int seqid, TProtocol iprot, TProtocol oprot) async {
+    getFileTreeForProject_args args = new getFileTreeForProject_args();
+    args.read(iprot);
+    iprot.readMessageEnd();
+    getFileTreeForProject_result result = new getFileTreeForProject_result();
+    result.success = await iface_.getFileTreeForProject(args.context, args.projectId);
+    oprot.writeMessageBegin(new TMessage("getFileTreeForProject", TMessageType.REPLY, seqid));
     result.write(oprot);
     oprot.writeMessageEnd();
     oprot.transport.flush();
@@ -238,6 +280,297 @@ class ping_result implements TBase {
 
   String toString() {
     StringBuffer ret = new StringBuffer("ping_result(");
+
+    ret.write(")");
+
+    return ret.toString();
+  }
+
+  validate() {
+    // check for required fields
+    // check that fields of type enum have valid values
+  }
+
+}
+
+class getFileTreeForProject_args implements TBase {
+  static final TStruct _STRUCT_DESC = new TStruct("getFileTreeForProject_args");
+  static final TField _CONTEXT_FIELD_DESC = new TField("context", TType.STRUCT, 1);
+  static final TField _PROJECT_ID_FIELD_DESC = new TField("projectId", TType.STRING, 2);
+
+  Context _context;
+  static const int CONTEXT = 1;
+  String _projectId;
+  static const int PROJECTID = 2;
+
+
+  getFileTreeForProject_args() {
+  }
+
+  // context
+  Context get context => this._context;
+
+  set context(Context context) {
+    this._context = context;
+  }
+
+  bool isSetContext() => this.context != null;
+
+  unsetContext() {
+    this.context = null;
+  }
+
+  // projectId
+  String get projectId => this._projectId;
+
+  set projectId(String projectId) {
+    this._projectId = projectId;
+  }
+
+  bool isSetProjectId() => this.projectId != null;
+
+  unsetProjectId() {
+    this.projectId = null;
+  }
+
+  getFieldValue(int fieldID) {
+    switch (fieldID) {
+      case CONTEXT:
+        return this.context;
+      case PROJECTID:
+        return this.projectId;
+      default:
+        throw new ArgumentError("Field $fieldID doesn't exist!");
+    }
+  }
+
+  setFieldValue(int fieldID, Object value) {
+    switch (fieldID) {
+      case CONTEXT:
+        if (value == null) {
+          unsetContext();
+        } else {
+          this.context = value;
+        }
+        break;
+
+      case PROJECTID:
+        if (value == null) {
+          unsetProjectId();
+        } else {
+          this.projectId = value;
+        }
+        break;
+
+      default:
+        throw new ArgumentError("Field $fieldID doesn't exist!");
+    }
+  }
+
+  // Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+  bool isSet(int fieldID) {
+    switch (fieldID) {
+      case CONTEXT:
+        return isSetContext();
+      case PROJECTID:
+        return isSetProjectId();
+      default:
+        throw new ArgumentError("Field $fieldID doesn't exist!");
+    }
+  }
+
+  read(TProtocol iprot) {
+    TField field;
+    iprot.readStructBegin();
+    while (true) {
+      field = iprot.readFieldBegin();
+      if (field.type == TType.STOP) {
+        break;
+      }
+      switch (field.id) {
+        case CONTEXT:
+          if (field.type == TType.STRUCT) {
+            this.context = new Context();
+            this.context.read(iprot);
+          } else {
+            TProtocolUtil.skip(iprot, field.type);
+          }
+          break;
+        case PROJECTID:
+          if (field.type == TType.STRING) {
+            this.projectId = iprot.readString();
+          } else {
+            TProtocolUtil.skip(iprot, field.type);
+          }
+          break;
+        default:
+          TProtocolUtil.skip(iprot, field.type);
+          break;
+      }
+      iprot.readFieldEnd();
+    }
+    iprot.readStructEnd();
+
+    // check for required fields of primitive type, which can't be checked in the validate method
+    validate();
+  }
+
+  write(TProtocol oprot) {
+    validate();
+
+    oprot.writeStructBegin(_STRUCT_DESC);
+    if (this.context != null) {
+      oprot.writeFieldBegin(_CONTEXT_FIELD_DESC);
+      this.context.write(oprot);
+      oprot.writeFieldEnd();
+    }
+    if (this.projectId != null) {
+      oprot.writeFieldBegin(_PROJECT_ID_FIELD_DESC);
+      oprot.writeString(this.projectId);
+      oprot.writeFieldEnd();
+    }
+    oprot.writeFieldStop();
+    oprot.writeStructEnd();
+  }
+
+  String toString() {
+    StringBuffer ret = new StringBuffer("getFileTreeForProject_args(");
+
+    ret.write("context:");
+    if (this.context == null) {
+      ret.write("null");
+    } else {
+      ret.write(this.context);
+    }
+
+    ret.write(", ");
+    ret.write("projectId:");
+    if (this.projectId == null) {
+      ret.write("null");
+    } else {
+      ret.write(this.projectId);
+    }
+
+    ret.write(")");
+
+    return ret.toString();
+  }
+
+  validate() {
+    // check for required fields
+    // check that fields of type enum have valid values
+  }
+
+}
+
+class getFileTreeForProject_result implements TBase {
+  static final TStruct _STRUCT_DESC = new TStruct("getFileTreeForProject_result");
+  static final TField _SUCCESS_FIELD_DESC = new TField("success", TType.STRUCT, 0);
+
+  File _success;
+  static const int SUCCESS = 0;
+
+
+  getFileTreeForProject_result() {
+  }
+
+  // success
+  File get success => this._success;
+
+  set success(File success) {
+    this._success = success;
+  }
+
+  bool isSetSuccess() => this.success != null;
+
+  unsetSuccess() {
+    this.success = null;
+  }
+
+  getFieldValue(int fieldID) {
+    switch (fieldID) {
+      case SUCCESS:
+        return this.success;
+      default:
+        throw new ArgumentError("Field $fieldID doesn't exist!");
+    }
+  }
+
+  setFieldValue(int fieldID, Object value) {
+    switch (fieldID) {
+      case SUCCESS:
+        if (value == null) {
+          unsetSuccess();
+        } else {
+          this.success = value;
+        }
+        break;
+
+      default:
+        throw new ArgumentError("Field $fieldID doesn't exist!");
+    }
+  }
+
+  // Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+  bool isSet(int fieldID) {
+    switch (fieldID) {
+      case SUCCESS:
+        return isSetSuccess();
+      default:
+        throw new ArgumentError("Field $fieldID doesn't exist!");
+    }
+  }
+
+  read(TProtocol iprot) {
+    TField field;
+    iprot.readStructBegin();
+    while (true) {
+      field = iprot.readFieldBegin();
+      if (field.type == TType.STOP) {
+        break;
+      }
+      switch (field.id) {
+        case SUCCESS:
+          if (field.type == TType.STRUCT) {
+            this.success = new File();
+            this.success.read(iprot);
+          } else {
+            TProtocolUtil.skip(iprot, field.type);
+          }
+          break;
+        default:
+          TProtocolUtil.skip(iprot, field.type);
+          break;
+      }
+      iprot.readFieldEnd();
+    }
+    iprot.readStructEnd();
+
+    // check for required fields of primitive type, which can't be checked in the validate method
+    validate();
+  }
+
+  write(TProtocol oprot) {
+    oprot.writeStructBegin(_STRUCT_DESC);
+
+    if (this.isSetSuccess()) {
+      oprot.writeFieldBegin(_SUCCESS_FIELD_DESC);
+      this.success.write(oprot);
+      oprot.writeFieldEnd();
+    }
+    oprot.writeFieldStop();
+    oprot.writeStructEnd();
+  }
+
+  String toString() {
+    StringBuffer ret = new StringBuffer("getFileTreeForProject_result(");
+
+    ret.write("success:");
+    if (this.success == null) {
+      ret.write("null");
+    } else {
+      ret.write(this.success);
+    }
 
     ret.write(")");
 
