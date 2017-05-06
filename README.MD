@@ -23,20 +23,17 @@ Optional:
 
 Note: Don't worry about this for purely server-side development. Only a full stack needs this.
 
-1. Install thrift
+1. Install thrift. 
 1. Clone the [thrift repository](https://github.com/apache/thrift)
 1. From `thrift/lib/`, copy `dart` to `thrift_dart` as a sibling to this repository.
 
     ```
     some_workspace
-    \
      |-- mt-proj-server
-     |   \
-     |    pubspec.yaml
-     |    ... etc.
+     |   | -- pubspec.yaml
+     |   | -- etc.
      |
      |-- thrift_dart
-     |   \
-     |     pubspec.yaml
-     |     ... etc.
+     |   | -- pubspec.yaml
+     |   | -- etc.
     ```
