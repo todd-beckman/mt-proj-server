@@ -37,7 +37,7 @@ def getDocHandler(docid):
     decodedDocId = decodeBase64Url(docid)
     return sampledocs[decodedDocId]
 
-@app.route('/doc/<docid>', method=['POST'])
+@app.route('/doc/<docid>', method=['PUT'])
 def postDocHandler(docid):
     """
     Naively insert

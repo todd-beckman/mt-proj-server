@@ -1,0 +1,10 @@
+name: mt_api
+version: 0.1.0
+description: Generated API for MT Proj
+author: todd beckman
+dependencies:
+  thrift:
+    path: ../thrift_dart
+
+
+
