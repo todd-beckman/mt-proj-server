@@ -4,14 +4,14 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-library mt_api.src.mt_gen.file;
+library mt_api.src.mt_gen.file_meta;
 
 import 'dart:typed_data' show Uint8List;
 import 'package:thrift/thrift.dart';
 import 'package:mt_api/src/mt_gen.dart';
 
-class File implements TBase {
-  static final TStruct _STRUCT_DESC = new TStruct("File");
+class FileMeta implements TBase {
+  static final TStruct _STRUCT_DESC = new TStruct("FileMeta");
   static final TField _ID_FIELD_DESC = new TField("id", TType.STRING, 1);
   static final TField _PROJECT_ID_FIELD_DESC = new TField("projectId", TType.STRING, 2);
   static final TField _TYPE_FIELD_DESC = new TField("type", TType.I32, 3);
@@ -26,12 +26,12 @@ class File implements TBase {
   static const int TYPE = 3;
   String _name;
   static const int NAME = 4;
-  List<File> _children;
+  List<FileMeta> _children;
   static const int CHILDREN = 5;
 
   bool __isset_type = false;
 
-  File() {
+  FileMeta() {
   }
 
   // id
@@ -88,9 +88,9 @@ class File implements TBase {
   }
 
   // children
-  List<File> get children => this._children;
+  List<FileMeta> get children => this._children;
 
-  set children(List<File> children) {
+  set children(List<FileMeta> children) {
     this._children = children;
   }
 
@@ -224,10 +224,10 @@ class File implements TBase {
           if (field.type == TType.LIST) {
             {
               TList _list0 = iprot.readListBegin();
-              this.children = new List<File>();
+              this.children = new List<FileMeta>();
               for (int _i1 = 0; _i1 < _list0.length; ++_i1) {
-                File _elem2;
-                _elem2 = new File();
+                FileMeta _elem2;
+                _elem2 = new FileMeta();
                 _elem2.read(iprot);
                 this.children.add(_elem2);
               }
@@ -287,7 +287,7 @@ class File implements TBase {
   }
 
   String toString() {
-    StringBuffer ret = new StringBuffer("File(");
+    StringBuffer ret = new StringBuffer("FileMeta(");
 
     ret.write("id:");
     if (this.id == null) {

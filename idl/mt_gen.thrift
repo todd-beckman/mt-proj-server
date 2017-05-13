@@ -8,12 +8,12 @@ struct Project {
     2: string name
 }
 
-struct File {
+struct FileMeta {
     1: string id
     2: string projectId
     3: FileType type
     4: string name
-    5: list<File> children
+    5: list<FileMeta> children
 }
 
 struct Context {
@@ -24,5 +24,13 @@ struct Context {
 service MTProj {
     void ping()
 
-    File getFileTreeForProject(1: Context context, 2: string projectId) // TODO: throws SomeError
+    // Step 1 -- collect metadata for projects available
+    map<string,Project> getProjectListForUser(1: Context context) // TODO: throws SomeError
+
+    // Step 2 -- collect metadata for files in a project
+    FileMeta getFileTreeForProject(1: Context context, 2: string projectId) // TODO: throws SomeError
+
+    // Step 3 -- get the contents of a file
+    // TODO: Returns a string for now but will eventually need to be a tree
+    string getFileContent(1: Context context, 2: string fileId) // TODO: throws SomeError
 }
