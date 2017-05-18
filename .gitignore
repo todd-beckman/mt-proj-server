@@ -1,4 +1,6 @@
 .idea
 .packages
 .pub/
+packages
+server/server
 
