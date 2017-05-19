@@ -69,7 +69,7 @@ packages:
     version: "1.0.1"
   thrift:
     description:
-      path: "../thrift/lib/dart"
+      path: "../../apache/thrift/lib/dart"
       relative: true
     source: path
     version: "1.0.0-dev"
