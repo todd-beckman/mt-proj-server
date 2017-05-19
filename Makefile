@@ -2,15 +2,17 @@ default: go dart
 
 DART_DIR=lib/src/
 
-dart: clean-dart gen-dart build-dart
+dart: clean-dart gen-dart get-dart
 
-go: clean-go gen-go build-go
+go: clean-go gen-go get-go build-go
 
 clean: clean-dart
 
 gen: gen-go gen-dart
 
-build: build-dart build-go
+get: get-go get-dart
+
+build: build-go
 
 clean-dart:
 	rm -rf lib/src/mt_gen
@@ -19,7 +21,7 @@ clean-dart:
 gen-dart:
 	thrift -gen dart:library_prefix="mt_api.src" -out $(DART_DIR) idl/mt_gen.thrift
 
-build-dart:
+get-dart:
 	pub get
 
 clean-go:
@@ -28,4 +30,8 @@ clean-go:
 gen-go:
 	thrift -gen go idl/mt_gen.thrift
 
+get-go:
+	cd server && go get
+
 build-go:
+	cd server && go build

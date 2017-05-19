@@ -4,7 +4,7 @@ description: Generated API for MT Proj
 author: todd beckman
 dependencies:
   thrift:
-      path:  ../../apache/thrift/lib/dart
+      path:  ../../../git.apache.org/thrift.git/lib/dart
 
 
 
