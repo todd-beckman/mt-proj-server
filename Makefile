@@ -35,3 +35,13 @@ get-go:
 
 build-go:
 	cd server && go build
+
+run:
+	cd server && ./server
+
+fmt:
+	go fmt . server/ functional_test/
+
+# Functional tests
+funtest:
+	cd functional_test && go test

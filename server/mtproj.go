@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	mt "github.com/todd-beckman/mt-proj-server/gen-go/mt_gen"
