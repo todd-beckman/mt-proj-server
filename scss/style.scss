@@ -1,6 +1,7 @@
 @import 'const';
 @import 'flexbox';
 @import 'mixins';
+@import 'button';
 
 // window framework namespace
 .main {
@@ -39,11 +40,11 @@ body{
   color: $color-primary;
   min-width: 800px;
   //font-family: "Slabo 27px", serif;
-  font-size: 62.5%;
+  font-size: $base-font-size;
 }
 
-button{
-  //font-family: "Slabo 27px", serif;
+div, p, input {
+  font-size: 1rem;
 }
 
 a {
@@ -57,11 +58,9 @@ a {
   }
 }
 
-
 // Mozilla puts two outlines and only lets customizing one. Remove the Mozilla-specific second one.
 a, a:active, a:focus,
-button, button:focus, button:active,
-.btn, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn.active.focus {
+button, button:focus, button:active {
   outline: none;
   outline: 0;
 }
@@ -72,11 +71,11 @@ div {
   box-sizing: border-box;
 }
 
-.body {
-  @include full-size();
-}
-
 
 p {
   margin: 0;
+}
+
+.body {
+  @include full-size();
 }

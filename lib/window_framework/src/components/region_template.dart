@@ -3,7 +3,7 @@ import 'package:react/react_client.dart';
 
 import '../region_manager.dart';
 
-import 'package:mtproj/common_ui/mt_skin.dart';
+import 'package:mtproj/mt_skin/mt_skin.dart';
 
 @Factory()
 UiFactory<RegionTemplateProps> RegionTemplate;

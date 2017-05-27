@@ -1,8 +1,8 @@
 import 'package:over_react/over_react.dart';
 import 'package:react/react_client.dart';
 
-import 'package:mtproj/common_ui/flexbox.dart';
-import 'package:mtproj/common_ui/mt_skin.dart';
+import 'package:mtproj/mt_skin/flexbox.dart';
+import 'package:mtproj/mt_skin/mt_skin.dart';
 import 'package:mtproj/editor/src/api.dart';
 
 @Factory()
@@ -10,7 +10,7 @@ UiFactory<DocProps> Doc;
 
 @Props()
 class DocProps extends UiProps {
-  MTColor color;
+  TextColor color;
   EditorActions actions;
   String docId;
   String content;

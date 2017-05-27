@@ -1,15 +1,11 @@
 // I like this font but the load times T_T
 //@import url(https://fonts.googleapis.com/css?family=Slabo+27px);
+@import 'pallet';
 
 // The body background
 $background: #CCCCCC;
 
-// Button styling
-$button-bg-primary: #BBBBBB;
-$button-bg-active: #00CC88;
-$button-bg-disabled: #DDDDDD;
-$button-bg-hover: #C0C0C0;
-$button-focus: #88AABB;
+$base-font-size: 62.5%;
 
 // Text styling
 $color-primary: #000000;

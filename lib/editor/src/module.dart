@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:meta/meta.dart' show required;
 import 'package:w_module/w_module.dart';
 
-import 'package:mtproj/common_ui/mt_skin.dart';
+import 'package:mtproj/mt_skin/mt_skin.dart';
 import 'package:mtproj/core/core.dart';
 
 import 'api.dart';
@@ -68,6 +68,6 @@ class EditorComponents extends ModuleComponents {
   @override
   content() => (Editor()
     ..actions = _actions
-    ..color = MTColor.RED
+    ..color = TextColor.Danger
     ..store = _store)();
 }

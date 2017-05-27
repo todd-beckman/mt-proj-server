@@ -2,7 +2,7 @@ import 'package:mtproj/mt_api.dart' as api;
 import 'package:over_react/over_react.dart';
 import 'package:react/react_client.dart';
 
-import 'package:mtproj/common_ui/flexbox.dart';
+import 'package:mtproj/mt_skin/flexbox.dart';
 
 const NAME_PADDING = 10;
 

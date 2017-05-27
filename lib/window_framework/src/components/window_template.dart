@@ -1,8 +1,7 @@
 import 'package:over_react/over_react.dart';
 import 'package:react/react_client.dart';
 
-import 'package:mtproj/core/core.dart' show log;
-import 'package:mtproj/common_ui/mt_skin.dart';
+import 'package:mtproj/ui_components/ui_components.dart';
 
 import 'region_template.dart';
 import 'tall_toolbar.dart';

@@ -1,7 +1,7 @@
 import 'package:over_react/over_react.dart';
 import 'package:react/react_client.dart';
 
-import 'package:mtproj/common_ui/flexbox.dart';
+import 'package:mtproj/mt_skin/flexbox.dart';
 import 'package:mtproj/lectern/src/api.dart';
 import 'package:mtproj/lectern/src/store.dart';
 

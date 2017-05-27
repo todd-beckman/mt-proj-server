@@ -22,7 +22,7 @@ get-dart:
 	pub get
 
 sass:
-	sass scss/style.scss lib/style.css --sourcemap=none
+	sass scss/style.scss lib/style.css --sourcemap=none --no-cache
 
 clean-go:
 	rm -rf server/gen-go

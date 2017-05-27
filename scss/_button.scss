@@ -1,0 +1,37 @@
+@import 'pallet';
+
+$button-font-size: 1rem;
+$button-width: 6rem;
+$button-vertical-padding: 0.3rem;
+
+.mt-button {
+  border-style: solid;
+  border-width: 0.1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
+  width: $button-width;
+  padding-top: $button-vertical-padding;
+  padding-bottom: $button-vertical-padding;
+  margin: 0.1rem;
+
+  @each $key, $color in $pallet {
+    &-#{$key} {
+      background-color: $color;
+      border-color: darken($color, 15);
+      color: $mt-white;
+
+      &:hover {
+        background-color: lighten($color, 5);
+      }
+
+      &:focus {
+        outline-color: $color;
+      }
+
+      &:active {
+        background-color: darken($color, 5);
+      }
+    }
+  }
+}

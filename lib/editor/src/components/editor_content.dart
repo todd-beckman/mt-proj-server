@@ -1,8 +1,8 @@
 import 'package:over_react/over_react.dart';
 import 'package:react/react_client.dart';
 
-import 'package:mtproj/common_ui/flexbox.dart';
-import 'package:mtproj/common_ui/mt_skin.dart';
+import 'package:mtproj/mt_skin/flexbox.dart';
+import 'package:mtproj/mt_skin/mt_skin.dart';
 import 'package:mtproj/editor/src/api.dart';
 import 'package:mtproj/editor/src/store.dart';
 
@@ -13,7 +13,7 @@ UiFactory<EditorProps> Editor;
 
 @Props()
 class EditorProps extends FluxUiProps<EditorActions, EditorStore> {
-  MTColor color;
+  TextColor color;
 }
 
 @Component()
