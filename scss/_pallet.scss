@@ -2,12 +2,14 @@ $mt-white: #F0F0F0;
 $mt-black: #000000;
 $mt-primary: #2080D0;
 $mt-alt: #C060C0;
-$mt-success: #80C020;
+$mt-success: #70B020;
 $mt-warn: #D09000;
 $mt-danger: #D33;
 $mt-gray: darken($mt-white, 30);
 
 $pallet: (
+    "white": $mt-white,
+    "black": $mt-black,
     "primary": $mt-primary,
     "alt": $mt-alt,
     "success": $mt-success,

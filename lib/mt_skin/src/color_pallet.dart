@@ -10,6 +10,18 @@ class BgColor extends MTSkinConstant {
   static final BgColor Success = new BgColor._internal('bg-success');
   static final BgColor Warn = new BgColor._internal('bg-warn');
   static final BgColor Danger = new BgColor._internal('bg-danger');
+  static final BgColor Gray = new BgColor._internal('bg-gray');
+
+  static final List<BgColor> values = [
+    White,
+    Black,
+    Primary,
+    Alternate,
+    Success,
+    Warn,
+    Danger,
+    Gray,
+  ];
 }
 
 class TextColor extends MTSkinConstant {
@@ -22,4 +34,16 @@ class TextColor extends MTSkinConstant {
   static final TextColor Success = new TextColor._internal('text-success');
   static final TextColor Warn = new TextColor._internal('text-warn');
   static final TextColor Danger = new TextColor._internal('text-danger');
+  static final TextColor Gray = new TextColor._internal('text-gray');
+
+  static final List<TextColor> values = [
+    White,
+    Black,
+    Primary,
+    Alternate,
+    Success,
+    Warn,
+    Danger,
+    Gray,
+  ];
 }
