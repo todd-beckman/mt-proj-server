@@ -1,0 +1,54 @@
+@import 'mixins';
+
+// Adds padding to the bottom of a file name
+@mixin file-name-padding($padding: 3px) {
+  margin: 0 0 $padding 0;
+}
+
+&-body {
+  @include disable-select();
+
+  overflow-y: scroll;
+}
+
+&-file__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+&-file__name {
+  @include cursor-pointer();
+  @include file-name-padding();
+
+  flex: none;
+
+  &:hover {
+    background-color: $button-bg-hover;
+  }
+
+  &.selected {
+    background-color: $button-bg-active;
+  }
+}
+
+&-file-name__padding {
+  padding-left: 5pt;
+  letter-spacing: 5pt;
+  color: $color-disabled;
+}
+
+&-file-name__content {
+  text-overflow: clip;
+  font-size: 14pt;
+}
+
+&-file-name__expand-icon {
+  width: 10px;
+}
+
+&-file-list__container {
+}

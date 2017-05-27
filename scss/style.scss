@@ -1,0 +1,82 @@
+@import 'const';
+@import 'flexbox';
+@import 'mixins';
+
+// window framework namespace
+.main {
+  @import 'window_framework';
+}
+
+// editor namespace
+.et {
+  @import 'editor';
+}
+
+// filetree namespace
+.ft {
+  @import 'filetree';
+}
+
+// lectern namespace
+.lt {
+  @import 'lectern';
+}
+
+// resize bar namespace
+.rb {
+  @import 'resize_bar';
+}
+
+// tall toolbar namespace
+.ttb {
+  @import 'tall_toolbar';
+}
+
+body{
+  @include full-size();
+
+  background-color: $background;
+  color: $color-primary;
+  min-width: 800px;
+  //font-family: "Slabo 27px", serif;
+  font-size: 62.5%;
+}
+
+button{
+  //font-family: "Slabo 27px", serif;
+}
+
+a {
+  &:link,
+  &:active,
+  &:visited{
+    color: #ddd;
+  }
+  &:hover{
+    color:#fcc;
+  }
+}
+
+
+// Mozilla puts two outlines and only lets customizing one. Remove the Mozilla-specific second one.
+a, a:active, a:focus,
+button, button:focus, button:active,
+.btn, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn.active.focus {
+  outline: none;
+  outline: 0;
+}
+
+
+// Border and padding computed in width/height automatically
+div {
+  box-sizing: border-box;
+}
+
+.body {
+  @include full-size();
+}
+
+
+p {
+  margin: 0;
+}

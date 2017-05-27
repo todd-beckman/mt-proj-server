@@ -1,18 +1,21 @@
-# MT Proj Server
+# MT-Proj
 
-A project that is in the making.
+This might not go anywhere
 
-## Development
+### Setting Up
 
-### Set up Dependencies
+- [Get Dart](https://www.dartlang.org/install). This project currently uses version 1.22.1
 
-Install dependencies:
+- `pub get` to install dependencies
 
-- Install [golang](https://golang.org/)
-- Install [thrift](http://thrift.apache.org/download). Note: this will not be needed unless you intend on regenerating the idl. Because installing this is actually not trivial, the code generated with thrift has been committed to the repository.
-- Install the github mirror for thrift: `go get github.com/apache/thrift/lib/go` (this is needed because the normal hosted libs don't contain the dart code).
-- Check out this repo `go get todd-beckman-mt-proj-server`. This cloned directory will be your working directory.
+### Local
 
-### Build
+- Set up the rest of the stack via [mt-proj-server](https://github.com/todd-beckman/mt-proj-server)
+- `pub serve`
 
-`make` to do everything automagically.
+### Development
+
+#### Build Sass
+
+Use `make sass` to compile sass. The compiled css is committed to the repository
+so sass does not become an overall dev dependency.

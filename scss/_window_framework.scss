@@ -1,0 +1,48 @@
+@import 'const';
+@import 'mixins';
+
+
+& {
+  @include full-size();
+
+  font-size: 1.2rem;
+}
+
+
+&-head{
+  background-color: #CCCCCC;
+  width: 100%;
+  max-height: $header-size;
+  min-height: $header-size;
+  overflow: hidden;
+}
+
+&-region {
+  @include body-height;
+
+  background-color: $panel-background-color;
+  overflow: hidden;
+}
+
+&-left {
+  left: $tall-toolbar-size;
+
+  .rb-hitarea {
+    display: none;
+  }
+
+  &:hover .rb-hitarea {
+    display: block;
+  }
+}
+
+&-right{
+  background-color: $panel-background-color;
+  right: $tall-toolbar-size;
+}
+
+&-body {
+  background-color: $body-background;
+  left: $tall-toolbar-size;
+  right: $tall-toolbar-size;
+}

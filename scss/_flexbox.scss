@@ -1,0 +1,14 @@
+// Flexbox container with items arranged left to right
+.flexbox-container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+// Flexbox container with items arranged top to bottom
+.flexbox-container-vertical{
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.flexbox-block {
+}

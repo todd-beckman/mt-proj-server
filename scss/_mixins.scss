@@ -1,0 +1,32 @@
+@import 'const';
+
+@mixin cursor-pointer() {
+  cursor: pointer;
+}
+
+@mixin disable-select() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin full-size() {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin body-height() {
+  position: absolute;
+  top: $header-size;
+  bottom: 0;
+}
+
+@mixin simple-border-bottom($color: black, $stroke: 1px) {
+  border-bottom: solid $color $stroke;
+}
+
+@mixin simple-border-right($color: black, $stroke: 1px) {
+  border-right: solid $color $stroke;
+}

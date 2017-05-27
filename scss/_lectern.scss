@@ -1,0 +1,20 @@
+@import 'const';
+@import 'mixins';
+
+&-body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+&-top-bar {
+  @include simple-border-bottom();
+}
+
+&-content__wrapper {
+  height: 100%;
+}
+
+&-content__wrapper > .lt-body-wrapper:not(:last-child) {
+  @include simple-border-right()
+}

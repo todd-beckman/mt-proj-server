@@ -1,10 +1,24 @@
-name: mt_api
-version: 0.1.0
-description: Generated API for MT Proj
+name: mtproj
+version: 0.0.1
+description: this may not go anywhere
 author: todd beckman
 dependencies:
+  browser: ^0.10.0
+  color: ^2.0.1
+  logging: ^0.11.3
+  over_react: ^1.8.0
   thrift:
-      path:  ../../../git.apache.org/thrift.git/lib/dart
+    path:  ../../../git.apache.org/thrift.git/lib/dart
+  uuid: ^0.5.3
+  w_common: ^1.4.1
+  w_module: ^1.2.1
+  w_flux: ^2.7.0
 
+dev_dependencies:
+  dart_dev: ^1.7.3
+  dart_style: ^1.0.4
+  test: ^0.12.20
 
-
+transformers:
+  - over_react
+  - $dart2js

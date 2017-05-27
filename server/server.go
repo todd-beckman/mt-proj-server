@@ -2,7 +2,7 @@ package server
 
 import (
 	"git.apache.org/thrift.git/lib/go/thrift"
-	mt "github.com/todd-beckman/mt-proj-server/gen-go/mt_gen"
+	mt "github.com/todd-beckman/mt-proj-server/server/gen-go/mt_api"
 )
 
 const (

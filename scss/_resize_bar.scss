@@ -1,0 +1,28 @@
+@import 'const';
+@import 'mixins';
+
+
+&-hitarea {
+  // hit area looks grey with a darker stroke down the middle
+  background-color: $resize_bar_stroke_color;
+  border-top: none;
+  border-bottom: none;
+  border-left: $resize_bar_boundary;
+  border-right: $resize_bar_boundary;
+
+  // looks draggable
+  cursor: col-resize;
+
+  // full height of the panel stuck to the right
+  position: absolute;
+  height: 100%;
+  width: $resize_bar_width;
+}
+
+&-hitarea__hook-right {
+  right: 0;
+}
+
+&-hitarea__hook-left {
+  left: 0;
+}

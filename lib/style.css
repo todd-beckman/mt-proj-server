@@ -1,0 +1,141 @@
+.flexbox-container {
+  display: flex;
+  flex-flow: row nowrap; }
+
+.flexbox-container-vertical {
+  display: flex;
+  flex-flow: column nowrap; }
+
+.main {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem; }
+.main-head {
+  background-color: #CCCCCC;
+  width: 100%;
+  max-height: 4rem;
+  min-height: 4rem;
+  overflow: hidden; }
+.main-region {
+  position: absolute;
+  top: 4rem;
+  bottom: 0;
+  background-color: #CCCCCC;
+  overflow: hidden; }
+.main-left {
+  left: 2rem; }
+  .main-left .rb-hitarea {
+    display: none; }
+  .main-left:hover .rb-hitarea {
+    display: block; }
+.main-right {
+  background-color: #CCCCCC;
+  right: 2rem; }
+.main-body {
+  background-color: #EEEEEE;
+  left: 2rem;
+  right: 2rem; }
+
+.et-body {
+  flex: 5 5 auto; }
+
+.ft-body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow-y: scroll; }
+.ft-file__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow-x: hidden;
+  overflow-y: scroll; }
+.ft-file__name {
+  cursor: pointer;
+  margin: 0 0 3px 0;
+  flex: none; }
+  .ft-file__name:hover {
+    background-color: #C0C0C0; }
+  .ft-file__name.selected {
+    background-color: #00CC88; }
+.ft-file-name__padding {
+  padding-left: 5pt;
+  letter-spacing: 5pt;
+  color: #666666; }
+.ft-file-name__content {
+  text-overflow: clip;
+  font-size: 14pt; }
+.ft-file-name__expand-icon {
+  width: 10px; }
+
+.lt-body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+.lt-top-bar {
+  border-bottom: solid black 1px; }
+.lt-content__wrapper {
+  height: 100%; }
+.lt-content__wrapper > .lt-body-wrapper:not(:last-child) {
+  border-right: solid black 1px; }
+
+.rb-hitarea {
+  background-color: #888888;
+  border-top: none;
+  border-bottom: none;
+  border-left: 0.24rem solid #BBBBBB;
+  border-right: 0.24rem solid #BBBBBB;
+  cursor: col-resize;
+  position: absolute;
+  height: 100%;
+  width: 0.5rem; }
+.rb-hitarea__hook-right {
+  right: 0; }
+.rb-hitarea__hook-left {
+  left: 0; }
+
+.ttb {
+  position: absolute;
+  top: 4rem;
+  bottom: 0;
+  width: 2rem; }
+.ttb__left {
+  background-color: #CC80CC;
+  left: 0; }
+.ttb__right {
+  background-color: #80CCCC;
+  right: 0; }
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #CCCCCC;
+  color: #000000;
+  min-width: 800px;
+  font-size: 62.5%; }
+
+a:link, a:active, a:visited {
+  color: #ddd; }
+a:hover {
+  color: #fcc; }
+
+a, a:active, a:focus,
+button, button:focus, button:active,
+.btn, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn.active.focus {
+  outline: none;
+  outline: 0; }
+
+div {
+  box-sizing: border-box; }
+
+.body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+p {
+  margin: 0; }

@@ -1,6 +1,11 @@
 .idea
 .packages
 .pub/
-packages
+.sass-cache
+
+build
+gen-go
+lib/mt_api*
 server/server
+packages
 

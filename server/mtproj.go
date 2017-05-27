@@ -1,7 +1,7 @@
 package server
 
 import (
-	mt "github.com/todd-beckman/mt-proj-server/gen-go/mt_gen"
+	mt "github.com/todd-beckman/mt-proj-server/server/gen-go/mt_api"
 )
 
 type MTProjHandler struct {
