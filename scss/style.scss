@@ -28,11 +28,6 @@
   @import 'resize_bar';
 }
 
-// tall toolbar namespace
-.ttb {
-  @import 'tall_toolbar';
-}
-
 body{
   @include full-size();
 

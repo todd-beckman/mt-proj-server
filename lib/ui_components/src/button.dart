@@ -6,14 +6,14 @@ import 'package:mtproj/mt_skin/mt_skin.dart';
 const _buttonPrefix = 'mt-button';
 
 class ButtonSkin extends MTSkinConstant {
-  ButtonSkin._internal(String className) : super(className);
+  const ButtonSkin._internal(String className) : super(className);
 
-  static final Primary = new ButtonSkin._internal('${_buttonPrefix}-primary');
-  static final Alternate = new ButtonSkin._internal('${_buttonPrefix}-alt');
-  static final Success = new ButtonSkin._internal('${_buttonPrefix}-success');
-  static final Warn = new ButtonSkin._internal('${_buttonPrefix}-warn');
-  static final Danger = new ButtonSkin._internal('${_buttonPrefix}-danger');
-  static final Gray = new ButtonSkin._internal('${_buttonPrefix}-gray');
+  static const Primary = const ButtonSkin._internal('${_buttonPrefix}-primary');
+  static const Alternate = const ButtonSkin._internal('${_buttonPrefix}-alt');
+  static const Success = const ButtonSkin._internal('${_buttonPrefix}-success');
+  static const Warn = const ButtonSkin._internal('${_buttonPrefix}-warn');
+  static const Danger = const ButtonSkin._internal('${_buttonPrefix}-danger');
+  static const Gray = const ButtonSkin._internal('${_buttonPrefix}-gray');
 }
 
 @Factory()

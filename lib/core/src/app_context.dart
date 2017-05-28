@@ -45,8 +45,9 @@ class AppContext {
       return false;
     }
 
-    await _intel.loadProjectMeta();
+    await _intel.loadProjectMeta('');
 
     _isLoaded = true;
+    return true;
   }
 }

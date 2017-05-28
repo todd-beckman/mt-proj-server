@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:logging/logging.dart';
 import 'package:meta/meta.dart';
 import 'package:mtproj/mt_api.dart' as api;
 import 'package:thrift/thrift.dart';
@@ -8,8 +9,9 @@ import 'package:uuid/uuid.dart';
 import 'package:w_common/w_common.dart';
 
 import 'environment.dart';
-import 'logging.dart';
 import 'session.dart';
+
+Logger _log = new Logger('mtproj.messenger');
 
 class Messenger extends Disposable {
   Uuid _uuid;
@@ -32,13 +34,13 @@ class Messenger extends Disposable {
 
   Future<Null> load() async {
     await _initConnection()
-        .catchError((e) => log.severe(e.message))
+        .catchError((e) => _log.severe(e.message))
         .then((success) {
       if (success) {
         _isLoaded = true;
-        log.info('Messenger initialized successfully');
+        _log.info('Messenger initialized successfully');
       } else {
-        log.warning('Failed to start messenger.');
+        _log.warning('Failed to start messenger.');
       }
     });
     return _isLoaded;
@@ -56,7 +58,7 @@ class Messenger extends Disposable {
     try {
       await _transport.open();
     } catch (e) {
-      log.severe(e);
+      _log.severe(e);
       return false;
     }
 
@@ -67,6 +69,10 @@ class Messenger extends Disposable {
   api.Context _makeContext(String method) => new api.Context()
     ..correlationId = '[${_uuid.v4()}] ${_session.userId} - $method'
     ..userId = _session.userId;
+
+  /// Sends a server API request to get the project meta data
+  Future<api.Project> getProjectMeta(String projectId) =>
+      _client.getProjectMeta(_makeContext('getProjectMeta'), projectId);
 
   /// Sends a server API request to get the project list for a user
   Future<Map<String, api.Project>> getProjectListForUser() =>

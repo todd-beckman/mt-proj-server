@@ -6,7 +6,7 @@ import 'utils.dart';
 abstract class MTSkinConstant {
   /// The CSS className of this constant
   final String className;
-  MTSkinConstant(String this.className);
+  const MTSkinConstant(String this.className);
 }
 
 /// An enumeration of which viewport mode to use based on the viewport's width.

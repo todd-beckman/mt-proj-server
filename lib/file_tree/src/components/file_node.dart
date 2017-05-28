@@ -1,8 +1,9 @@
-import 'package:mtproj/mt_api.dart' as api;
+import 'package:mtproj/central_intelligence/central_intelligence.dart';
+import 'package:mtproj/mt_skin/flexbox.dart';
 import 'package:over_react/over_react.dart';
 import 'package:react/react_client.dart';
 
-import 'package:mtproj/mt_skin/flexbox.dart';
+import '../store.dart';
 
 const NAME_PADDING = 10;
 
@@ -11,8 +12,9 @@ UiFactory<FileNodeProps> FileNode;
 
 @Props()
 class FileNodeProps extends UiProps {
-  api.FileMeta file;
   int _depth;
+  MtFile file;
+  FileTreeStore store;
 }
 
 @State()
@@ -42,7 +44,7 @@ class FileNodeComponent
         ..key = 'name'
         ..className = fileNameClassBuilder.toClassName()
         ..onClick = _handleClick)(
-        _padName(props.file.name, props._depth),
+        _padName(props.file.displayName, props._depth),
       ),
     ];
 
@@ -62,19 +64,24 @@ class FileNodeComponent
     );
   }
 
-  List<ReactElement> _renderFileList(api.FileMeta file, int depth) {
+  List<ReactElement> _renderFileList(MtFile file, int depth) {
     var items = <ReactElement>[];
 
-    file.children.forEach((api.FileMeta file) {
-      items.add(
-        (Block()
-          ..key = file.id
-          ..className = 'ft-list__file')(
-          (FileNode()
-            ..file = file
-            .._depth = props._depth + 1)(),
-        ),
-      );
+    file.children.forEach((String fileId) {
+      var file = props.store.project[fileId];
+      if (file != null) {
+        items.add(
+          (Block()
+            ..key = file.id
+            ..className = 'ft-list__file')(
+            (FileNode()
+              .._depth = props._depth + 1
+              ..file = file
+              ..store = props.store
+            )(),
+          ),
+        );
+      }
     });
     return items;
   }

@@ -31,6 +31,7 @@ class FileTreeModule extends Module {
 
   FileTreeModule({
     @required AppContext appContext,
+    @required String projectId,
   }) {
     _actions = new FileTreeActions();
     _events = new FileTreeEvents(_dispatchKey);
@@ -40,6 +41,7 @@ class FileTreeModule extends Module {
       actions: _actions,
       events: _events,
       dispatchKey: _dispatchKey,
+      projectId: projectId,
     );
 
     _components = new FileTreeComponents(
@@ -62,6 +64,8 @@ class FileTreeComponents extends ModuleComponents {
   })
       : _actions = actions,
         _store = store;
+
+  String title() => _store.title;
 
   @override
   ReactElement content() => (FileTree()

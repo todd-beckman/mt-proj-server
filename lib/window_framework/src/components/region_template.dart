@@ -3,14 +3,16 @@ import 'package:react/react_client.dart';
 
 import '../region_manager.dart';
 
-import 'package:mtproj/mt_skin/mt_skin.dart';
-
 @Factory()
 UiFactory<RegionTemplateProps> RegionTemplate;
 
 @Props()
 class RegionTemplateProps extends FluxUiProps<RegionActions, RegionManager> {
   RegionLocation location;
+
+  // Declare these explicitly because otherwise they get copied into copyUnconsumedProps
+  RegionActions actions;
+  RegionManager store;
 }
 
 @Component()
@@ -21,18 +23,39 @@ class RegionTemplateComponent extends FluxUiComponent<RegionTemplateProps> {
   void componentWillMount() {
     super.componentWillMount();
 
-    baseClassName = classNameForLocation(props.location);
+    baseClassName = props.location.className;
   }
 
   @override
   ReactElement render() {
-    var childProps = copyUnconsumedProps();
-    var classNameBuilder = new ClassNameBuilder()
-      ..addFromProps(childProps)
-      ..add('$baseClassName-content');
+    var children = <ReactElement>[];
+    var component = props.store.activeProduct;
+    if (component != null) {
+      var title = component.title;
+      if (title != null) {
+        children.add((Dom.div()
+          ..className = 'main-region-title'
+          ..key = 'title')(
+          (Dom.div()..className = 'main-region-title__text')(
+            title,
+          ),
+        ));
+      }
 
-    return (Dom.div()..className = classNameBuilder.toClassName())(
-      props.store.activeContent.content,
+      var content = component.content;
+      if (content != null) {
+        children.add((Dom.div()
+          ..className = 'main-region__content'
+          ..key = 'content')(
+          content,
+        ));
+      }
+    }
+
+    return (Dom.div()
+      ..className = forwardingClassNameBuilder().toClassName()
+      ..addProps(copyUnconsumedProps()))(
+      children,
     );
   }
 }

@@ -1,6 +1,12 @@
+@import 'pallet';
 @import 'const';
 @import 'mixins';
 
+$header-border-color: $mt-gray;
+$header-border-size: 0.1rem;
+$panel-side-padding: 0.3rem;
+$panel-title-border-width: 0.1rem;
+$panel-title-border-color: $mt-gray;
 
 & {
   @include full-size();
@@ -8,24 +14,52 @@
   font-size: 1.2rem;
 }
 
-
+// main-head is just the header's unique properties
 &-head{
-  background-color: #CCCCCC;
-  width: 100%;
+  border-bottom: solid $header-border-color $header-border-size;
+  box-shadow: $mt-black;
   max-height: $header-size;
   min-height: $header-size;
   overflow: hidden;
+  width: 100%;
+  z-index: 1;
 }
 
+// main-region are the left, body, and right region
+// This excluse the head
 &-region {
-  @include body-height;
+  @include body-height();
 
-  background-color: $panel-background-color;
   overflow: hidden;
+  bottom: 0;
+  padding-left: $panel-side-padding;
+  padding-right: $panel-side-padding;
+  position: absolute;
+  top: $header-size;
+
+  &__content {
+    height: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
+  }
+
+
+  &-title {
+    border-bottom: solid $panel-title-border-width $panel-title-border-color;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  &-title__text {
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    display: inline-block;
+  }
 }
 
 &-left {
-  left: $tall-toolbar-size;
+  left: 0;
 
   .rb-hitarea {
     display: none;
@@ -37,12 +71,9 @@
 }
 
 &-right{
-  background-color: $panel-background-color;
-  right: $tall-toolbar-size;
+  right: 0;
 }
 
 &-body {
   background-color: $body-background;
-  left: $tall-toolbar-size;
-  right: $tall-toolbar-size;
 }

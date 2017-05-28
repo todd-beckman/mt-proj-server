@@ -5,10 +5,13 @@ import 'package:w_common/disposable.dart';
 
 import 'package:mtproj/core/core.dart' show Messenger;
 
-/// Information that is known for a Project
-class MTFile extends Disposable {
-  MTFile(api.FileMeta this._fileMeta, Messenger this._messenger) {
+/// Read-only information that is known for a file.
+///
+/// Writes should be made separately. Ideally backed by built-values
+class MtFile extends Disposable {
+  MtFile(api.FileMeta this._fileMeta, Messenger this._messenger) {
     didDispose.then((_) {
+      _children= null;
       _content = null;
       _fileMeta = null;
       _messenger = null;
@@ -19,11 +22,15 @@ class MTFile extends Disposable {
 
   api.FileMeta _fileMeta;
 
+  /// The [id]'s of this file's children
+  List<String> get children => _children;
+  List<String> _children = [];
+
   /// This project's unique identifier
   String get id => _fileMeta.id;
 
   /// The user-facing name of this project
-  String get displayName => _fileMeta.name;
+  String get displayName => _fileMeta.displayName;
 
   /// Whether this project has loaded all of its required data
   bool get isLoaded => _isLoaded;

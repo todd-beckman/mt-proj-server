@@ -306,36 +306,84 @@
   color: #a4a4a4; }
 .main .bg-gray {
   background-color: #a4a4a4; }
+.main .text-white {
+  color: #F0F0F0; }
+.main .bg-white {
+  background-color: #F0F0F0; }
+.main .text-black {
+  color: #000000; }
+.main .bg-black {
+  background-color: #000000; }
+.main .text-primary {
+  color: #2080D0; }
+.main .bg-primary {
+  background-color: #2080D0; }
+.main .text-alt {
+  color: #C060C0; }
+.main .bg-alt {
+  background-color: #C060C0; }
+.main .text-success {
+  color: #70B020; }
+.main .bg-success {
+  background-color: #70B020; }
+.main .text-warn {
+  color: #D09000; }
+.main .bg-warn {
+  background-color: #D09000; }
+.main .text-danger {
+  color: #D33; }
+.main .bg-danger {
+  background-color: #D33; }
+.main .text-gray {
+  color: #a4a4a4; }
+.main .bg-gray {
+  background-color: #a4a4a4; }
 .main {
   height: 100%;
   margin: 0;
   padding: 0;
   font-size: 1.2rem; }
 .main-head {
-  background-color: #CCCCCC;
-  width: 100%;
+  border-bottom: solid #a4a4a4 0.1rem;
+  box-shadow: #000000;
   max-height: 4rem;
   min-height: 4rem;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 100%;
+  z-index: 1; }
 .main-region {
   position: absolute;
   top: 4rem;
   bottom: 0;
-  background-color: #CCCCCC;
-  overflow: hidden; }
+  overflow: hidden;
+  bottom: 0;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  position: absolute;
+  top: 4rem; }
+  .main-region__content {
+    height: 100%;
+    max-height: 100%;
+    overflow-y: scroll; }
+  .main-region-title {
+    border-bottom: solid 0.1rem #a4a4a4;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem; }
+  .main-region-title__text {
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    display: inline-block; }
 .main-left {
-  left: 2rem; }
+  left: 0; }
   .main-left .rb-hitarea {
     display: none; }
   .main-left:hover .rb-hitarea {
     display: block; }
 .main-right {
-  background-color: #CCCCCC;
-  right: 2rem; }
+  right: 0; }
 .main-body {
-  background-color: #EEEEEE;
-  left: 2rem;
-  right: 2rem; }
+  background-color: #EEEEEE; }
 
 .et-body {
   flex: 5 5 auto; }
@@ -552,50 +600,6 @@
   right: 0; }
 .rb-hitarea__hook-left {
   left: 0; }
-
-.ttb .text-white {
-  color: #F0F0F0; }
-.ttb .bg-white {
-  background-color: #F0F0F0; }
-.ttb .text-black {
-  color: #000000; }
-.ttb .bg-black {
-  background-color: #000000; }
-.ttb .text-primary {
-  color: #2080D0; }
-.ttb .bg-primary {
-  background-color: #2080D0; }
-.ttb .text-alt {
-  color: #C060C0; }
-.ttb .bg-alt {
-  background-color: #C060C0; }
-.ttb .text-success {
-  color: #70B020; }
-.ttb .bg-success {
-  background-color: #70B020; }
-.ttb .text-warn {
-  color: #D09000; }
-.ttb .bg-warn {
-  background-color: #D09000; }
-.ttb .text-danger {
-  color: #D33; }
-.ttb .bg-danger {
-  background-color: #D33; }
-.ttb .text-gray {
-  color: #a4a4a4; }
-.ttb .bg-gray {
-  background-color: #a4a4a4; }
-.ttb {
-  position: absolute;
-  top: 4rem;
-  bottom: 0;
-  width: 2rem; }
-.ttb__left {
-  background-color: #CC80CC;
-  left: 0; }
-.ttb__right {
-  background-color: #80CCCC;
-  right: 0; }
 
 body {
   height: 100%;

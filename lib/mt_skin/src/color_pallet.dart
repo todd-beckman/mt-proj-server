@@ -1,18 +1,18 @@
 import 'constants.dart';
 
 class BgColor extends MTSkinConstant {
-  BgColor._internal(String className) : super(className);
+  const BgColor._internal(String className) : super(className);
 
-  static final BgColor White = new BgColor._internal('bg-white');
-  static final BgColor Black = new BgColor._internal('bg-black');
-  static final BgColor Primary = new BgColor._internal('bg-primary');
-  static final BgColor Alternate = new BgColor._internal('bg-alt');
-  static final BgColor Success = new BgColor._internal('bg-success');
-  static final BgColor Warn = new BgColor._internal('bg-warn');
-  static final BgColor Danger = new BgColor._internal('bg-danger');
-  static final BgColor Gray = new BgColor._internal('bg-gray');
+  static const BgColor White = const BgColor._internal('bg-white');
+  static const BgColor Black = const BgColor._internal('bg-black');
+  static const BgColor Primary = const BgColor._internal('bg-primary');
+  static const BgColor Alternate = const BgColor._internal('bg-alt');
+  static const BgColor Success = const BgColor._internal('bg-success');
+  static const BgColor Warn = const BgColor._internal('bg-warn');
+  static const BgColor Danger = const BgColor._internal('bg-danger');
+  static const BgColor Gray = const BgColor._internal('bg-gray');
 
-  static final List<BgColor> values = [
+  static const List<BgColor> values = const [
     White,
     Black,
     Primary,
@@ -25,18 +25,18 @@ class BgColor extends MTSkinConstant {
 }
 
 class TextColor extends MTSkinConstant {
-  TextColor._internal(String className) : super(className);
+  const TextColor._internal(String className) : super(className);
 
-  static final TextColor White = new TextColor._internal('text-white');
-  static final TextColor Black = new TextColor._internal('text-black');
-  static final TextColor Primary = new TextColor._internal('text-primary');
-  static final TextColor Alternate = new TextColor._internal('text-alt');
-  static final TextColor Success = new TextColor._internal('text-success');
-  static final TextColor Warn = new TextColor._internal('text-warn');
-  static final TextColor Danger = new TextColor._internal('text-danger');
-  static final TextColor Gray = new TextColor._internal('text-gray');
+  static const TextColor White = const TextColor._internal('text-white');
+  static const TextColor Black = const TextColor._internal('text-black');
+  static const TextColor Primary = const TextColor._internal('text-primary');
+  static const TextColor Alternate = const TextColor._internal('text-alt');
+  static const TextColor Success = const TextColor._internal('text-success');
+  static const TextColor Warn = const TextColor._internal('text-warn');
+  static const TextColor Danger = const TextColor._internal('text-danger');
+  static const TextColor Gray = const TextColor._internal('text-gray');
 
-  static final List<TextColor> values = [
+  static const List<TextColor> values = const [
     White,
     Black,
     Primary,
@@ -44,6 +44,6 @@ class TextColor extends MTSkinConstant {
     Success,
     Warn,
     Danger,
-    Gray,
+    Gray
   ];
 }

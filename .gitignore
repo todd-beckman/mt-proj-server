@@ -1,7 +1,6 @@
 .idea
 .packages
 .pub/
-.sass-cache
 
 build
 gen-go

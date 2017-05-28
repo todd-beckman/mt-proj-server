@@ -16,9 +16,14 @@ main() {
     appContext: appContext,
   );
 
-  var content = new Content(module);
+  var content = new Product(module,
+      titleFactory: module.components.title,
+      contentFactory: module.components.content,
+  );
   content.load(); // TODO: make this part of WindowManager lifecycle
 
-  var windowManager = new MockWindowManager(left: content);
+  var windowManager = new MockWindowManager(leftProduct: content)
+    ..setRegionInactive(RegionLocation.Right);
+
   react_dom.render(windowManager.content(), querySelector('#body'));
 }

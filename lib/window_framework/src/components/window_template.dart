@@ -4,10 +4,7 @@ import 'package:react/react_client.dart';
 import 'package:mtproj/ui_components/ui_components.dart';
 
 import 'region_template.dart';
-import 'tall_toolbar.dart';
 import '../region_manager.dart';
-
-const toolbarWidth = 32;
 
 @Factory()
 UiFactory<WindowTemplateProps> WindowTemplate;
@@ -24,10 +21,6 @@ class WindowTemplateProps extends UiProps {
 
 @Component()
 class WindowTemplateComponent extends UiComponent<WindowTemplateProps> {
-  RegionTemplateComponent _leftRef;
-  RegionTemplateComponent _bodyRef;
-  RegionTemplateComponent _rightRef;
-
   /// Left panel width in px
   int leftWidth;
 
@@ -38,8 +31,8 @@ class WindowTemplateComponent extends UiComponent<WindowTemplateProps> {
   void componentWillMount() {
     super.componentWillMount();
 
-    leftWidth = 250; // TODO: smart default to device size
-    rightWidth = 250; // TODO: smart default to device size
+    leftWidth = 300; // TODO: smart default to device size
+    rightWidth = 300; // TODO: smart default to device size
   }
 
   @override
@@ -49,7 +42,10 @@ class WindowTemplateComponent extends UiComponent<WindowTemplateProps> {
       ..addFromProps(childProps)
       ..add('main');
 
-    var children = <ReactElement>[(TallToolbar()..isRightSide = false)()];
+    var children = <ReactElement>[];
+    if (props.head.shouldRenderRegion) {
+      children.add(_renderHeadPanel());
+    }
     if (props.left.shouldRenderRegion) {
       children.add(_renderLeftPanel());
     }
@@ -59,77 +55,57 @@ class WindowTemplateComponent extends UiComponent<WindowTemplateProps> {
     if (props.body.shouldRenderRegion) {
       children.add(_renderBody());
     }
-    children.add((TallToolbar()..isRightSide = true)());
 
     return (Dom.div()..className = classNameBuilder.toClassName())(
-      (Dom.div()..className = 'main-head')(
-        (RegionTemplate()
-          ..actions = props.head.actions
-          ..location = RegionLocation.HEAD
-          ..store = props.head)(),
-      ),
       children,
     );
   }
 
+  ReactElement _renderHeadPanel() {
+    return (RegionTemplate()
+      ..actions = props.head.actions
+      ..className = 'main-head'
+      ..key = 'head'
+      ..location = RegionLocation.Head
+      ..store = props.head)();
+  }
+
   ReactElement _renderLeftPanel() {
-    return (Dom.div()
+    return (RegionTemplate()
+      ..actions = props.left.actions
       ..className = 'main-region main-left'
+      ..key = 'left'
+      ..location = RegionLocation.Left
+      ..store = props.left
       ..style = {
         'width': '${leftWidth}px',
-      })(
-      (ResizeBar()..hookRight = true)(),
-      (RegionTemplate()
-        ..actions = props.left.actions
-        ..location = RegionLocation.LEFT
-        ..ref = (ref) {
-          _leftRef = ref;
-        }
-        ..store = props.left)(),
-    );
+      })();
   }
 
   ReactElement _renderRightPanel() {
-    return (Dom.div()
+    return (RegionTemplate()
+      ..actions = props.right.actions
       ..className = 'main-region main-right'
+      ..key = 'right'
+      ..location = RegionLocation.Right
+      ..store = props.right
       ..style = {
         'width': '${rightWidth}px',
-      })(
-      (ResizeBar()..hookRight = false)(),
-      (RegionTemplate()
-        ..actions = props.right.actions
-        ..location = RegionLocation.RIGHT
-        ..ref = (ref) {
-          _rightRef = ref;
-        }
-        ..store = props.right)(),
-    );
+      })();
   }
 
   ReactElement _renderBody() {
-    int leftPosition = toolbarWidth;
-    if (props.left.shouldRenderRegion) {
-      leftPosition += leftWidth;
-    }
-
-    int rightPosition = toolbarWidth;
-    if (props.right.shouldRenderRegion) {
-      rightPosition += rightWidth;
-    }
-
-    return (Dom.div()
+    var left = props.left.shouldRenderRegion ? leftWidth : 0;
+    var right = props.right.shouldRenderRegion ? rightWidth : 0;
+    return (RegionTemplate()
+      ..actions = props.body.actions
       ..className = 'main-region main-body'
+      ..key = 'body'
+      ..location = RegionLocation.Body
+      ..store = props.body
       ..style = {
-        'left': '${leftPosition}px',
-        'right': '${rightPosition}px',
-      })(
-      (RegionTemplate()
-        ..actions = props.body.actions
-        ..location = RegionLocation.BODY
-        ..ref = (ref) {
-          _bodyRef = ref;
-        }
-        ..store = props.body)(),
-    );
+        'left': '${left}px',
+        'right': '${right}px',
+      })();
   }
 }
